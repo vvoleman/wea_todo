@@ -1,6 +1,6 @@
 <template>
     <button @click="logout">
-        <InfoTag icon="user" :tag="user.email" theme="lighter"/>
+        <InfoTag icon="user" :tag="email" theme="lighter"/>
         Odhlásit se
     </button>
 </template>
@@ -27,8 +27,14 @@ export default defineComponent({
         }
     },
     computed: {
-        user() {
-            return this.store.user
+        email() {
+            const user = this.store.user
+
+            if (user) {
+                return user.email
+            }
+
+            return '...'
         },
     }
 })
