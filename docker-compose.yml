@@ -1,27 +1,27 @@
 version: '3.2'
 services:
-#    frontend:
-#        build:
-#            context: ./frontend
-#            dockerfile: docker/Dockerfile
-#        ports:
-#            - "80:80"
-#        restart: always
-#        volumes:
-#            - ./frontend:/app
-#        links:
-#            - backend
-#        depends_on:
-#            - backend
-#        networks:
-#            - node_network
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: docker/Dockerfile
+        ports:
+            - "80:80"
+        restart: always
+        volumes:
+            - ./frontend:/app
+        links:
+            - backend
+        depends_on:
+            - backend
+        networks:
+            - node_network
     backend:
         ports:
             - '3000:3000'
         restart: always
         build:
             context: ./backend
-            dockerfile: docker/Dockerfile
+            dockerfile: Dockerfile
         volumes:
             - ./backend:/usr/src/app
         links:
