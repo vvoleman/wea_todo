@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 # copying packages first helps take advantage of docker layers
 COPY package*.json ./
-#COPY ./node_modules ./node_modules
+COPY ./node_modules ./node_modules
 
 RUN npm install\
         && npm install typescript -g
