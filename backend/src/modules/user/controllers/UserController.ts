@@ -74,7 +74,7 @@ class UserController extends AbstractController {
         }
 
         return new JsonResponse({
-            'message': 'Unable to sign in',
+            'message': 'Invalid credentials'
         }, 401)
     }
 

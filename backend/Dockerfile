@@ -1,24 +1,21 @@
-FROM node:16 as build-stage
+FROM node:16
 
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-# copying packages first helps take advantage of docker layers
+# Copy the package.json and package-lock.json
 COPY package*.json ./
-COPY ./node_modules ./node_modules
 
-RUN npm install\
-        && npm install typescript -g
+# Install dependencies
+RUN npm install
 
-RUN npm ci
-
+# Copy the rest of the source code
 COPY . .
+
+# Build the app
 RUN npm run build
-CMD [ "npm", "run", "start" ]
-#CMD ["npm", "run", "dev"]
-#EXPOSE 3000
 
+RUN ls -l dist/
 
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the app
+CMD ["node", "dist/index.js"]

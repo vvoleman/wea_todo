@@ -64,7 +64,7 @@ export const useAuthStore = defineStore('auth',  () =>{
         } catch (e) {
             const error = e as AxiosError
 
-            if (error.response?.status === 404) {
+            if (error.response?.status === 401) {
                 throw new UnauthorizedError("Invalid credentials")
             }
 
