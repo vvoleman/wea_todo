@@ -22,6 +22,8 @@ services:
         build:
             context: ./backend
             dockerfile: Dockerfile
+        volumes:
+            - ./backend:/app
         links:
             - postgres
         depends_on:
