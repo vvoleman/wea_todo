@@ -1,1 +1,1 @@
-export const API_URL = import.meta.env.API_URL || 'http://139.59.147.144/3000';
+export const API_URL = import.meta.env.API_URL || 'http://139.59.147.144:3000';
