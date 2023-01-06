@@ -46,7 +46,7 @@ services:
     adminer:
         image: "adminer"
         ports:
-            - "9998:8080"
+            - "9997:8080"
         links:
             - postgres
         depends_on:
