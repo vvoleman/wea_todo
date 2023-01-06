@@ -12,5 +12,6 @@ COPY --from=build-stage /app/dist dist
 COPY --from=build-stage /app/node_modules node_modules
 COPY --from=build-stage /app/package.json package.json
 COPY --from=build-stage /app/package-lock.json package-lock.json
+COPY --from=build-stage /app/docker/.env .env
 EXPOSE 3000
 CMD ["node", "dist/index.js"]
