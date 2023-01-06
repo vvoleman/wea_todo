@@ -5,6 +5,7 @@ COPY package*.json ./
 RUN npm install
 RUN npm install typescript -g
 COPY . .
+COPY tsconfig.json .
 RUN npm run build
 
 # production stage
