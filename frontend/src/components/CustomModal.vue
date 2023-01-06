@@ -11,7 +11,7 @@
         <div class="modal__content">
             <slot :params="params"></slot>
         </div>
-        <button class="modal__close" @click="close">
+        <button type="button" class="modal__close" @click="close">
             &times;
         </button>
     </VueFinalModal>
