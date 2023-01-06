@@ -21,8 +21,8 @@ export default defineComponent({
         }
     },
     methods: {
-        logout() {
-            this.store.signOut()
+        async logout() {
+            await this.store.signOut()
             this.$router.push({name: 'signin'})
         }
     },
