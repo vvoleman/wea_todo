@@ -16,4 +16,5 @@ COPY --from=build-stage /app/package.json package.json
 COPY --from=build-stage /app/package-lock.json package-lock.json
 COPY --from=build-stage /app/.env .env
 EXPOSE 3000
+RUN mkdir -p /dist/logs
 CMD ["node", "dist/index.js"]

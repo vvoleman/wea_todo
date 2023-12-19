@@ -1,2 +1,5 @@
 .idea/
 data/
+.env
+*/.env
+docker-compose.override.yml
