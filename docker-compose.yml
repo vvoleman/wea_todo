@@ -1,11 +1,12 @@
 version: '3.2'
 services:
     frontend:
+        container_name: "todo_frontend"
         build:
             context: ./frontend
             dockerfile: docker/Dockerfile
         ports:
-            - "8000:80"
+            - "${FRONTEND_PORT}:80"
         restart: always
         volumes:
             - ./frontend:/app
@@ -15,9 +16,12 @@ services:
             - backend
         networks:
             - node_network
+        env_file:
+            -   .env
     backend:
+        container_name: "todo_backend"
         ports:
-            - '3000:3000'
+            - "${BACKEND_PORT}:3000"
         restart: always
         build:
             context: ./backend
@@ -30,28 +34,19 @@ services:
             - postgres
         networks:
             - node_network
+        env_file:
+            -   .env
     postgres:
+        container_name: "todo_postgres"
         image: postgres:14.1-alpine
         restart: always
-        environment:
-            - POSTGRES_USER=root
-            - POSTGRES_PASSWORD=root
-            - POSTGRES_DB=todos
         ports:
-            - "5432:5432"
+            - "5132:5432"
         volumes:
             - ./postgres/db.sql:/docker-entrypoint-initdb.d/database-seed.sql
         networks:
             - node_network
-    adminer:
-        image: "adminer"
-        ports:
-            - "9997:8080"
-        links:
-            - postgres
-        depends_on:
-            - postgres
-        networks:
-            - node_network
+        env_file:
+            -   .env
 networks:
     node_network:

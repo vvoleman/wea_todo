@@ -2,3 +2,6 @@ node_modules/*
 logs/
 dist/
 .idea/
+*/.env
+.env
+docker-compose.override.yml

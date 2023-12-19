@@ -1,5 +1,3 @@
-import * as Path from "path";
-
 require('module-alias/register');
 import app from '../src/app';
 import http from 'http';
@@ -13,5 +11,7 @@ app.set('port', port);
 
 // Create HTTP server.
 const server = http.createServer(app);
-server.listen(port);
+server.listen(port, ()=>{
+	console.log(`Server listening on port ${port}`);
+});
 server.on('error', (e) => {console.log(e)});

@@ -62,7 +62,6 @@ export default defineComponent({
     },
     methods: {
         async onSubmit(values: any) {
-            console.log(values)
             const {email, password, password2, gdpr} = values
 
             this.resultErrors = []
@@ -71,7 +70,7 @@ export default defineComponent({
             try {
                 await this.store.signUp(email, password, password2)
 
-                this.$router.push({name: 'home'})
+                await this.$router.push({name: 'home'})
             } catch (e) {
                 if (e instanceof UserAlreadyExistsError) {
                     this.resultErrors.push('Uživatel s tímto emailem již existuje')
