@@ -42,8 +42,9 @@ const routers = [
     new TaskRouter()
 ];
 
+const urlPrefix = process.env.URL_PREFIX ?? ''
 for (const router of routers) {
-    app.use(router.getExpressRouter())
+    app.use(urlPrefix, router.getExpressRouter())
 }
 // No route found
 app.use(new NoRouteFoundMiddleware().getExpressMiddleware())
